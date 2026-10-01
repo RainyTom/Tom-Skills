@@ -1,5 +1,5 @@
 ---
-name: doc-to-markdown
+name: documents-to-markdown
 description: "通过 MinerU 精准解析 API 将 PDF/图片/Office/HTML 等多种格式文档转换为 Markdown。需 Token，支持单文件/批量/URL/本地文件上传，YAML 配置管理密钥。触发词：文档转md、anything-to-markdown、mineru、文档转换、extract task、图片转md、word转md、ppt转md。"
 allowed-tools:
   - Read
@@ -118,7 +118,7 @@ results = converter.parse_file_batch(
 #### 配置文件格式
 
 ```yaml
-# <skill_dir>/config.yaml（即 skills/doc-to-markdown/config.yaml）
+# <skill_dir>/config.yaml（即 skills/documents-to-markdown/config.yaml）
 mineru:
   # 精准解析 API Token（在 https://mineru.net 的 API 管理页面创建）
   token: "your-mineru-token-here"

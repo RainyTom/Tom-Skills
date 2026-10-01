@@ -1,5 +1,5 @@
 ---
-name: paper-fetch
+name: academic-paper-fetch
 description: "通过标题、arXiv ID 或 DOI 下载论文 PDF，支持 arXiv / DBLP / Google Scholar / Sci-Hub 多源获取，自动去重检查。仅处理物料获取阶段，不进行格式转换或内容分析。"
 argument-hint: "论文标题、arXiv ID、DOI、doi.org 链接或下载 URL"
 ---

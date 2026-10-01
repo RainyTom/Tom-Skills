@@ -1,5 +1,5 @@
 ---
-name: paper-review
+name: academic-paper-review
 description: "模拟会议/期刊同行审稿，对学术论文（CS/AI 方向）生成结构化审稿意见。输出包含 Summary、Strong Points、Weak Points、Detailed Comments、Suggestions for Improvement、Confidential Comments to Editor、Overall Rating。遵循学术评审最佳实践：原创性/技术正确性/文献综述/表述清晰度/影响力五维评估。以批判性审稿人立场行动，保持建设性。触发词：审稿、peer review、审稿意见、paper review、referee report、论文评审。"
 argument-hint: "[论文 markdown 文件路径或直接粘贴内容]"
 allowed-tools:
@@ -49,12 +49,12 @@ metadata:
 推荐工作流（与其他 skill 联合使用）：
 
 ```
-1. 用 paper-fetcher 下载论文 PDF
+1. 用 academic-paper-fetch 下载论文 PDF
 2. 用 anything-to-markdown 把 PDF 转成 md
-3. 用 paper-review 审稿转换后的 md
+3. 用 academic-paper-review 审稿转换后的 md
 ```
 
-输出写入 `.paper-review/paper.review.md`（参考 [审稿模板](./assets/review-template.md)），与论文 Markdown 文件在同一项目下。若用户指定了输出路径，优先遵守。
+输出写入 `.academic-paper-review/paper.review.md`（参考 [审稿模板](./assets/review-template.md)），与论文 Markdown 文件在同一项目下。若用户指定了输出路径，优先遵守。
 
 ## 详细指南
 
@@ -76,7 +76,7 @@ metadata:
 - **不运行实验**：可以建议补充实验或标记为 author-data gates，但执行属于作者。
 - **不编造结果**：不虚构数字、引用、数据集内容或作者决策。
 - **不假装看到缺失内容**：若论文缺少关键信息（如未报告方差、缺少消融实验），标记为 Missing Evidence，不猜测。
-- 审稿产物写入 `.paper-review/` 目录，不写入 manuscript 源目录。
+- 审稿产物写入 `.academic-paper-review/` 目录，不写入 manuscript 源目录。
 
 ### 审稿档位
 
@@ -128,7 +128,7 @@ metadata:
 
 参考 [审稿模板](./assets/review-template.md)，生成审稿意见并保存为 `paper.review.md`。
 
-**写入路径**：默认写入 `.paper-review/paper.review.md`，若用户指定了输出路径则遵守。
+**写入路径**：默认写入 `.academic-paper-review/paper.review.md`，若用户指定了输出路径则遵守。
 
 **评判标准：**
 
@@ -229,7 +229,7 @@ metadata:
 
 ## 示例
 
-用户说 `审稿这篇论文：@paper.md` → 执行 full 档位审稿：阶段 0 准备（未指定 venue 则以通用顶会标准）→ 阶段 1 扫描通读 → 阶段 2 按五维逐节精读 → 阶段 3 参考模板撰写英文审稿意见（每条后跟中文翻译块），写入 `.paper-review/paper.review.md` → 阶段 4 质量自检后交付。
+用户说 `审稿这篇论文：@paper.md` → 执行 full 档位审稿：阶段 0 准备（未指定 venue 则以通用顶会标准）→ 阶段 1 扫描通读 → 阶段 2 按五维逐节精读 → 阶段 3 参考模板撰写英文审稿意见（每条后跟中文翻译块），写入 `.academic-paper-review/paper.review.md` → 阶段 4 质量自检后交付。
 
 用户说 `按 ICML 标准做 full review：@paper.md` → 先搜索 ICML 官方 reviewer guide 与录用标准，调整评分 bar，其余流程同上，并在 Rating justification 中体现 venue context。
 

@@ -48,23 +48,20 @@ skills-manager link                # 按 lock/已存配置把 skills 链接到�
 
 上游：`github.com/tc9011/skills-manager`、`github.com/vercel-labs/skills`（其 main 分支已内建 junction 处理）。
 
-## Skill 清单（11，功能域前缀命名）
+## Skill 清单（8）
 
-| 名 | 前缀组 | 原名 | 功能 |
-|----|--------|------|------|
-| paper-fetch | paper- 论文处理 | academic-paper-fetcher | 多源下载论文 PDF |
-| paper-analyze | paper- | academic-paper-analyzer | 论文批判性深度分析 |
-| paper-review | paper- | academic-paper-peer-reviewer | 同行审稿意见生成 |
-| text-humanize | text- 通用文本变换 | academic-article-humanizer | 去 AI 写作痕迹（不限论文） |
-| text-compress | text- | semantic-compression | 文本密集化压缩 |
-| doc-to-markdown | doc- 文档处理 | tool-anything-to-markdown | 多格式文档转 Markdown |
-| doc-translate-markdown | doc- | tool-markdown-translate | Markdown 翻译（不限论文） |
-| doc-edit | doc- | tool-docx | Word 文档处理 |
-| alphaxiv | 品牌名 | — | alphaXiv 检索与研究 |
-| zotero-interact | 品牌名 | — | Zotero 文献库管理 |
-| token-efficient | 品牌名 | — | Copilot token 规则包 |
+| 名 | 功能 |
+|----|------|
+| academic-paper-fetch | 多源下载论文 PDF（arXiv/DBLP/Scholar/Sci-Hub） |
+| academic-paper-analyze | 论文批判性深度分析报告 |
+| academic-paper-review | 同行审稿意见生成 |
+| text-humanize | 去 AI 写作痕迹 |
+| documents-to-markdown | 多格式文档转 Markdown |
+| alphaxiv-interact | alphaXiv 检索与研究 |
+| zotero-interact | Zotero 文献库管理 |
+| token-efficient | Copilot token 规则包 |
 
-命名规范：kebab-case；按功能域加前缀分组（paper- 论文处理 / text- 通用文本变换 / doc- 文档处理），前缀描述功能而非限定场景；绑定外部服务的保留品牌名。全部 SKILL.md 已统一为中文模板（概述/使用场景/使用方法/详细指南/示例/注意事项）。
+命名规范：kebab-case；学术工作流三件套以 `academic-` 前缀分组，`-interact` 后缀表示外部服务集成，其余按功能直述。全部 SKILL.md 统一为中文模板（概述/使用场景/使用方法/详细指南/示例/注意事项）。
 
 ## 新增 skill / prompt
 

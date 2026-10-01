@@ -1,5 +1,5 @@
 ---
-name: paper-analyze
+name: academic-paper-analyze
 description: "批判性深度分析学术论文（CS/AI 方向），生成图文并茂的结构化 Markdown 报告。含执行摘要、形式化问题定义、方法审查、实验可信度评估、声明验证、去包装检查、跨论文影响、跨领域类比及推荐阅读。以批判性研究分析师立场行动，保持中立，以证据为中心。触发词：论文分析、paper analysis、文献分析、深度读论文、论文报告。"
 argument-hint: "[论文 markdown 文件路径或直接粘贴内容]"
 allowed-tools:
@@ -29,7 +29,7 @@ metadata:
 
 接收以下任一形式的输入：
 
-1. **Markdown 文件路径**：已转换为 Markdown 的论文全文（推荐使用 `doc-to-markdown` 技能预先转换 PDF）
+1. **Markdown 文件路径**：已转换为 Markdown 的论文全文（推荐使用 `documents-to-markdown` 技能预先转换 PDF）
 2. **直接粘贴**：在对话中直接提供论文的 Markdown 内容
 
 分析报告保存为 `paper.report.md`，与论文 Markdown 文件在同一目录。
@@ -172,9 +172,9 @@ Agent 必须以**批判性研究分析师**而非论文总结者的身份行动�
 ### 联合使用（推荐工作流）
 
 ```
-1. 用 paper-fetch 下载论文 PDF
-2. 用 doc-to-markdown 把 PDF 转成 md
-3. 用 paper-analyze 分析转换后的 md
+1. 用 academic-paper-fetch 下载论文 PDF
+2. 用 documents-to-markdown 把 PDF 转成 md
+3. 用 academic-paper-analyze 分析转换后的 md
 ```
 
 ## 注意事项
