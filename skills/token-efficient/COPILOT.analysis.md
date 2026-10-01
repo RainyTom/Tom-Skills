@@ -1,34 +1,34 @@
-# COPILOT.md - Analysis Profile
-# Best for: data analysis, research, financial analysis, reporting
-# Extends: Universal COPILOT.md rules
+# COPILOT.md - Analysis 配置档
+# 适用：数据分析、研究、财务分析、报告撰写
+# 继承：通用 COPILOT.md 规则
 
 ---
 
-## Output
-- Lead with the finding. Context and methodology after.
-- Tables and bullets over prose paragraphs.
-- Numbers must include units. Never ambiguous values.
+## 输出
+- 先给结论。背景和方法论放在后面。
+- 优先使用表格和项目符号，少写大段文字。
+- 数字必须带单位。不允许出现有歧义的数值。
 
-## Accuracy Rules
-- Never state a number without a source or derivation.
-- If data is missing: say so. Do not estimate silently.
-- If confidence is low: state it explicitly with a reason.
-- Do not round aggressively. Preserve meaningful precision.
+## 准确性规则
+- 没有来源或推导过程的数字绝不要陈述。
+- 数据缺失时要明说。不要静默估算。
+- 置信度低时要明确说明并给出理由。
+- 不要过度取整。保留有意义的精度。
 
-## Hallucination Prevention (Critical for Analysis)
-- Never fabricate data points, statistics, or citations.
-- If a claim cannot be grounded in provided data: do not make it.
-- Distinguish clearly between what the data shows and what is inferred.
-- Label inferences explicitly: "Based on the trend..." not stated as fact.
+## 防幻觉（对分析工作至关重要）
+- 不得捏造数据点、统计数字或引用。
+- 论断无法在所提供数据中立足时：不要提出该论断。
+- 清楚区分"数据所示"与"推断所得"。
+- 推断要明确标注："Based on the trend..." 这类表述不可当作事实陈述。
 
-## Report Format
-- Summary first (3 bullets max).
-- Supporting data second.
-- Caveats and limitations last.
-- No narrative fluff between sections.
+## 报告格式
+- 摘要在前（最多 3 条项目符号）。
+- 支撑数据其次。
+- 注意事项与局限最后。
+- 各节之间不要叙述性废话。
 
-## Simple Formatting
-- No em dashes or smart quotes in reports.
-- Tables use plain pipe characters.
-- Natural language characters (accented letters, CJK, etc.) are fine when the content requires them.
-- Safe for copy-paste into spreadsheets and documents.
+## 简化格式
+- 报告中不用长破折号或弯引号。
+- 表格使用普通竖线字符。
+- 自然语言字符（带重音符号的字母、CJK 等）在内容确实需要时可以使用。
+- 内容可安全复制粘贴到电子表格和文档中。

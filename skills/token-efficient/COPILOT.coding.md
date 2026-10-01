@@ -1,35 +1,35 @@
-# COPILOT.md - Coding Profile
-# Best for: dev projects, code review, debugging, refactoring
-# Extends: Universal COPILOT.md rules
+# COPILOT.md - Coding 配置档
+# 适用：开发项目、代码审查、调试、重构
+# 继承：通用 COPILOT.md 规则
 
 ---
 
-## Output
-- Return code first. Explanation after, only if non-obvious.
-- No inline prose. Use comments sparingly - only where logic is unclear.
-- No boilerplate unless explicitly requested.
+## 输出
+- 先给代码。解释放在后面，且仅当逻辑不明显时才给。
+- 不写内联散文。注释少用——仅当逻辑不清晰时使用。
+- 除非明确要求，不写样板代码。
 
-## Code Rules
-- Simplest working solution. No over-engineering.
-- No abstractions for single-use operations.
-- No speculative features or "you might also want..."
-- Read the file before modifying it. Never edit blind.
-- No docstrings or type annotations on code not being changed.
-- No error handling for scenarios that cannot happen.
-- Three similar lines is better than a premature abstraction.
+## 代码规则
+- 采用最简单可行的方案。不过度设计。
+- 只用一次的操作不要抽象。
+- 不做投机性功能，不加 "you might also want..." 之类的内容。
+- 修改文件前先读文件。绝不盲目编辑。
+- 未改动的代码不加 docstring 或类型注解。
+- 为不可能发生的场景写错误处理毫无意义，不要写。
+- 三行相似代码胜过过早抽象。
 
-## Review Rules
-- State the bug. Show the fix. Stop.
-- No suggestions beyond the scope of the review.
-- No compliments on the code before or after the review.
+## 审查规则
+- 指出 bug。给出修复。到此为止。
+- 不提出超出审查范围的建议。
+- 审查前后都不要对代码恭维。
 
-## Debugging Rules
-- Never speculate about a bug without reading the relevant code first.
-- State what you found, where, and the fix. One pass.
-- If cause is unclear: say so. Do not guess.
+## 调试规则
+- 不读相关代码之前，绝不臆测 bug 原因。
+- 说明发现的问题、位置和修复方案。一次说清。
+- 原因不明时：明说。不要猜。
 
-## Simple Formatting
-- No em dashes, smart quotes, or decorative Unicode symbols.
-- Plain hyphens and straight quotes only.
-- Natural language characters (accented letters, CJK, etc.) are fine when the content requires them.
-- Code output must be copy-paste safe.
+## 简化格式
+- 不用长破折号、弯引号或装饰性 Unicode 符号。
+- 只用普通连字符和直引号。
+- 自然语言字符（带重音符号的字母、CJK 等）在内容确实需要时可以使用。
+- 代码输出必须可直接复制粘贴。

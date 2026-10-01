@@ -1,46 +1,78 @@
-# ~/.agents — Agent Skills 统一真源
+# ~/.agents — Skills / Prompts 统一真源
 
-合并时间：2026-10-01。本目录是所有 agent skills 的唯一真源（single source of truth），各 agent 的原 skills 路径已改为链接指向这里。
+本目录是所有 agent skills 与 prompts 的唯一真源（single source of truth），同时是一个 git 仓库（remote：`github.com/RainyTom/Tom-Skills`），由 skills-manager 推送备份。
 
-## 真源
+## 目录结构
 
-- Windows：`C:\Users\24809\.agents\skills\`（11 个 skill，101 个文件）
-- WSL：通过 `/mnt/c/Users/24809/.agents/skills` 访问同一真源
+```
+~/.agents/
+├── skills/            ← 11 个 skill（唯一真身）
+├── prompts/           ← 可复用 prompts（约定见 prompts/README.md）
+├── .skill-lock.json   ← vercel skills 维护（首次 skills add -g 后生成；skills-manager 只读）
+└── README.md          ← 本文件
+```
 
-## 链接一览
+## 工具链（两者配合）
 
-| 环境 | agent | 链接路径 | 类型 | 目标 |
-|------|-------|---------|------|------|
-| Win | oh-my-pi | `C:\Users\24809\.omp\agent\skills` | Junction | `C:\Users\24809\.agents\skills` |
-| Win | GitHub Copilot CLI | `C:\Users\24809\.copilot\skills` | Junction | 同上 |
-| WSL | oh-my-pi | `~/.omp/agent/skills` | symlink | `/mnt/c/Users/24809/.agents/skills` |
-| WSL | GitHub Copilot CLI | `~/.copilot/skills` | symlink | 同上 |
-| WSL | pi（本次新增能力，原本无 skills） | `~/.pi/agent/skills` | symlink | 同上 |
+### 1. vercel skills CLI（安装 / 发现 / 更新 skill）
 
-## Skill 清单（11）
+```bash
+skills find [query]                          # 搜索 skills.sh
+skills add <repo> -g -a oh-my-pi -a github-copilot -y   # 安装到真源并链接到指定 agent
+skills ls -g                                 # 列出已装 skill
+skills update -g -y                          # 更新全部
+skills remove <name> -g                      # 移除
+```
 
-oh-my-pi 来源（10）：academic-article-humanizer、academic-paper-analyzer、academic-paper-fetcher、academic-paper-peer-reviewer、alphaxiv、semantic-compression、tool-anything-to-markdown、tool-docx、tool-markdown-translate、zotero-interact
+- 安装目标：全局模式写入 `~/.agents/skills`（真源），Windows 下自动用 junction 链接到各 agent 目录，无需管理员权限。
+- 它会把本次选择的 agent 记入 `.skill-lock.json` 的 `lastSelectedAgents`。
 
-GitHub Copilot CLI 来源（1）：token-efficient
+### 2. skills-manager（备份 / 跨机同步 / 重新分发）
 
-## 新增 skill
+```bash
+skills-manager push                # 提交并推送本目录到 GitHub
+skills-manager pull                # 新机器上拉取（会自动跑 link）
+skills-manager link                # 按 lock/已存配置把 skills 链接到各 agent
+```
 
-直接在 `~/.agents/skills/<skill-name>/` 下新建目录并放入 `SKILL.md`（及相关脚本），所有 agent 立即生效，无需再建链接。
+- 分发目标（本机）：Win Junction → `.omp\agent\skills`（oh-my-pi）、`.copilot\skills`（GitHub Copilot CLI）。
+- pi 仅装在 WSL：skills-manager 在 Windows 侧运行检测不到，WSL 的 pi 需另行处理。
+
+## 本地补丁清单（npm 升级会覆盖，需重新打）
+
+| 包 | 文件 | 补丁 |
+|---|---|---|
+| `@tc9011/skills-manager@0.13.0` | `dist/agents.js` + `dist/agents.d.ts` | 注册表新增 `oh-my-pi`（globalPath `~/.omp/agent/skills`） |
+| 同上 | `dist/linker.js` | Windows 下 symlink 改用 junction（修 EPERM，4 处调用点） |
+| `skills@1.7.0` | `dist/cli.mjs` | 注册表新增 `oh-my-pi`（约 1918 行） |
+
+上游：`github.com/tc9011/skills-manager`、`github.com/vercel-labs/skills`（其 main 分支已内建 junction 处理）。
+
+## Skill 清单（11，功能域前缀命名）
+
+| 名 | 前缀组 | 原名 | 功能 |
+|----|--------|------|------|
+| paper-fetch | paper- 论文处理 | academic-paper-fetcher | 多源下载论文 PDF |
+| paper-analyze | paper- | academic-paper-analyzer | 论文批判性深度分析 |
+| paper-review | paper- | academic-paper-peer-reviewer | 同行审稿意见生成 |
+| text-humanize | text- 通用文本变换 | academic-article-humanizer | 去 AI 写作痕迹（不限论文） |
+| text-compress | text- | semantic-compression | 文本密集化压缩 |
+| doc-to-markdown | doc- 文档处理 | tool-anything-to-markdown | 多格式文档转 Markdown |
+| doc-translate-markdown | doc- | tool-markdown-translate | Markdown 翻译（不限论文） |
+| doc-edit | doc- | tool-docx | Word 文档处理 |
+| alphaxiv | 品牌名 | — | alphaXiv 检索与研究 |
+| zotero-interact | 品牌名 | — | Zotero 文献库管理 |
+| token-efficient | 品牌名 | — | Copilot token 规则包 |
+
+命名规范：kebab-case；按功能域加前缀分组（paper- 论文处理 / text- 通用文本变换 / doc- 文档处理），前缀描述功能而非限定场景；绑定外部服务的保留品牌名。全部 SKILL.md 已统一为中文模板（概述/使用场景/使用方法/详细指南/示例/注意事项）。
+
+## 新增 skill / prompt
+
+- skill：放进 `~/.agents/skills/<name>/`（含 `SKILL.md`），跑 `skills-manager link` 分发。
+- prompt：放进 `~/.agents/prompts/<name>/PROMPT.md`，见 `prompts/README.md`。
+- 完成后 `skills-manager push` 备份。
 
 ## 回滚
 
-在 git-bash 中运行：
-
-```bash
-bash ~/agents-skills-rollback.sh
-```
-
-脚本会：拆除全部 Junction/symlink → 把 11 个 skill 移回原路径 → 重建 WSL 侧副本 → 清理空的 `.agents`。
-
-## 备注
-
-- 按用户决定：本次合并未做任何 tar 备份；合并前已验证 WSL 副本与 Win 副本逐字节一致（token-efficient 仅 CRLF/LF 换行符差异），WSL 重复件与 Win 侧 10 个空占位 junction 已直接删除，无信息损失。
-- skill 内的 `__pycache__`、`.DS_Store` 为可再生缓存，已随目录原样迁移。
-- **Windows 链接是 Junction，不能跨卷；删除链接请用 `rmdir`（或 `cmd /d /c rmdir`），切勿 `rm -rf`——会穿过链接删除真源内容。**
-- WSL 链接跨文件系统（/mnt/c），在 WSL 内执行 skill 里的 python 脚本会略慢，属预期现象。
-- `.copilot/skills` 下原有的 10 个按 skill 细分的旧 junction（指向 `.omp/agent/skills/<name>`）已拆除，由现在的单链接取代。
+- 链接问题：重跑 `skills-manager link`（幂等）；拆除单个 agent 的链接用 `rmdir`，**切勿 `rm -rf`**（会穿过 junction 删真源）。
+- 完全回滚到合并前：`bash ~/agents-skills-rollback.sh`（注意：它会先拆 `.omp`/`.copilot` 下的 junction，再把 skill 移回原路径）。

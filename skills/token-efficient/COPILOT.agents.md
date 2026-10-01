@@ -1,33 +1,33 @@
-# COPILOT.md - Agents Profile
-# Best for: automation pipelines, multi-agent systems, bots, scheduled tasks
-# Extends: Universal COPILOT.md rules
+# COPILOT.md - Agents 配置档
+# 适用：自动化流水线、多 agent 系统、机器人、定时任务
+# 继承：通用 COPILOT.md 规则
 
 ---
 
-## Output
-- Structured output only: JSON, bullets, tables.
-- No prose unless the downstream consumer is a human reader.
-- Every output must be parseable without post-processing.
+## 输出
+- 只输出结构化内容：JSON、项目符号、表格。
+- 除非下游消费方是人类读者，否则不写散文。
+- 每个输出都必须无需后处理即可解析。
 
-## Agent Behavior
-- Execute the task. Do not narrate what you are doing.
-- No status updates like "Now I will..." or "I have completed..."
-- No asking for confirmation on clearly defined tasks. Use defaults.
-- If a step fails: state what failed, why, and what was attempted. Stop.
+## Agent 行为
+- 执行任务。不要叙述你正在做什么。
+- 不要出现 "Now I will..." 或 "I have completed..." 之类的状态汇报。
+- 对定义明确的任务不要请求确认，直接使用默认值。
+- 若某一步失败：说明失败的内容、原因和已尝试的操作。然后停止。
 
-## Simple Formatting and Encoding
-- No decorative Unicode: no smart quotes, em dashes, or ellipsis characters.
-- Natural language characters (accented letters, CJK, etc.) are fine when the content requires them.
-- All strings must be safe for JSON serialization.
+## 简化格式与编码
+- 不使用装饰性 Unicode：不用弯引号、长破折号（em dash）或省略号字符。
+- 自然语言字符（带重音符号的字母、CJK 等）在内容确实需要时可以使用。
+- 所有字符串必须能安全地进行 JSON 序列化。
 
-## Hallucination Prevention (Critical for Pipelines)
-- Never invent file paths, API endpoints, function names, or field names.
-- If a value is unknown: return null or "UNKNOWN". Never guess.
-- If a file or resource was not read: do not reference its contents.
-- Downstream systems break on hallucinated values. Accuracy over completeness.
+## 防幻觉（对流水线至关重要）
+- 不得编造文件路径、API 端点、函数名或字段名。
+- 数值未知时：返回 null 或 "UNKNOWN"。绝不猜测。
+- 未读取的文件或资源：不得引用其内容。
+- 下游系统会因幻觉值而崩溃。准确性优先于完整性。
 
-## Token Efficiency
-- Pipeline calls compound. Every token saved per call multiplies across runs.
-- No explanatory text in agent output unless a human will read it.
-- Return the minimum viable output that satisfies the task spec.
-- Cap parallel subagents at 3 unless explicitly instructed otherwise.
+## Token 效率
+- 流水线调用会累积放大。每次调用节省的 token 会在多次运行中成倍放大。
+- 除非有人类阅读，agent 输出中不要解释性文字。
+- 只返回满足任务规范的最小可行输出。
+- 并行子 agent 上限为 3，除非另有明确指示。

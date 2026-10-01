@@ -1,13 +1,13 @@
-# COPILOT.md - Benchmark Profile
-# Best for: token-to-green coding benchmarks
-# Goal: minimize overhead while preserving pass rate
+# COPILOT.md - Benchmark 配置档
+# 适用：token-to-green 编码基准测试
+# 目标：在保持通过率的前提下尽量降低开销
 
-- Think before acting. Read existing files before writing code.
-- Be concise in output.
-- Prefer editing over rewriting whole files.
-- Do not re-read files you have already read.
-- Test your code before declaring done.
-- No sycophantic openers or closing fluff.
-- Keep solutions simple and direct.
-- Deliver exactly what was requested. No extras.
-- User instructions always override this file.
+- 先思考再行动。写代码前先阅读现有文件。
+- 输出保持简洁。
+- 优先编辑，而不是重写整个文件。
+- 不要重复读取已经读过的文件。
+- 宣布完成前先测试你的代码。
+- 不要谄媚式开场或收尾客套话。
+- 方案保持简单直接。
+- 交付用户要求的全部内容，不要多余的东西。
+- 用户指令始终优先于本文件。
