@@ -1,0 +1,66 @@
+{
+  "skill_name": "alphaxiv",
+  "evals": [
+    {
+      "id": 0,
+      "name": "literature-review",
+      "prompt": "我在写一篇关于大语言模型幻觉的综述，导师让我先摸清楚最近两年的关键工作。帮我用 alphaXiv 找 2024 年以来最重要的 5-8 篇相关论文，对每篇提取：核心方法、用了什么数据集、在哪些基准上评测。最后给我一份 markdown 报告，我要基于它继续写。",
+      "expected_output": "包含 5-8 篇论文的结构化 Markdown 综述报告，每篇含 arXiv ID、核心方法、数据集、评测基准，并有综合分析章节。",
+      "files": [],
+      "expectations": [
+        "报告包含至少 5 篇不同论文（至少 5 个不同的 arXiv ID）",
+        "多数论文条目同时提到核心方法与数据集/评测基准",
+        "报告包含综合分析/总结章节",
+        "论文主体为 2024 年及以后发表（arXiv ID 以 24/25/26 开头占多数）",
+        "使用 discover_papers 并设置了 published_after 时间窗过滤（2024-01-01 或等价）",
+        "工具调用中无服务端参数错误（-32602）"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "paper-deep-read",
+      "prompt": "帮我仔细读一下 Attention Is All You Need（https://arxiv.org/abs/1706.03762）。我想搞清楚：1) 多头注意力具体是怎么计算的（Q/K/V 怎么来的、多个头怎么合并）；2) 位置编码为什么用 sin/cos；3) 训练超参数（batch size、学习率、步数）；4) 作者列了哪些局限性。逐条回答，引用要带页码。",
+      "expected_output": "四个子问题逐条回答，答案基于论文真实内容，引用带页码（来自 answer_pdf_queries 的 page num）。",
+      "files": [],
+      "expectations": [
+        "回答包含多头注意力计算细节（Q/K/V 来源与多 head 合并）",
+        "回答解释位置编码使用 sin/cos 的原因",
+        "回答给出训练超参数（batch 规模、学习率、步数等具体数值）",
+        "回答列出论文局限性",
+        "引用包含页码（如“第 N 页”或 page N）",
+        "所有问题批量进一次 answer_pdf_queries（该工具恰好调用 1 次）",
+        "工具调用中无服务端参数错误（-32602）"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "researcher-discovery",
+      "prompt": "我老板让我调研一下“通用机器人策略评估”（generalist robotic policies）这个方向最近谁在做，尤其是资深 PI。另外我想知道 Chelsea Finn 最近一年发了什么论文，以及谁经常和她合作。整理成一份简要报告。",
+      "expected_output": "报告含：该方向 >=3 位研究者及机构、Chelsea Finn 近一年论文（>=1 篇带标题和 arXiv ID）、至少 1 位合作者。",
+      "files": [],
+      "expectations": [
+        "报告列出该方向至少 3 位研究者并给出其机构",
+        "报告包含 Chelsea Finn 的近期论文（至少 1 篇带 arXiv ID）",
+        "报告识别出至少 1 位与 Chelsea Finn 合作的研究者",
+        "报告结构完整（标题与分节）",
+        "主题检索使用 find_researchers 的 topic 参数（而非被静默忽略的 question）",
+        "工具调用中无服务端参数错误（-32602）"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "code-analysis",
+      "prompt": "论文 https://arxiv.org/abs/2103.00020 (CLIP) 的代码是公开的吗？如果有仓库，帮我看看仓库整体结构，找到训练和评估相关的代码，总结一下如果想复现需要哪些步骤。",
+      "expected_output": "确认仓库 URL 与是否公开；描述顶层结构；定位训练/评估代码位置；给出复现步骤概述。",
+      "files": [],
+      "expectations": [
+        "报告确认代码公开并给出仓库 URL",
+        "报告描述仓库顶层结构（至少 3 个顶层条目）",
+        "报告定位到训练与评估相关代码的位置",
+        "报告给出至少 3 个复现步骤",
+        "使用 read_files_from_github_repository 且首次读取使用 path=\"/\" 获取目录树",
+        "工具调用中无服务端参数错误（-32602）"
+      ]
+    }
+  ]
+}

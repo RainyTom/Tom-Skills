@@ -1,0 +1,22 @@
+[
+  {"query": "帮我在 alphaXiv 上找一下最近两年关于大语言模型幻觉的综述论文，我导师让我开始写文献综述了", "should_trigger": true},
+  {"query": "这篇论文 https://arxiv.org/abs/2307.12307 讲了什么？帮我总结一下核心贡献和主要方法", "should_trigger": true},
+  {"query": "谁在做多模态大模型的幻觉检测？帮我找几个这个方向的资深学者，最好给出他们的机构和代表作", "should_trigger": true},
+  {"query": "我要写一份关于 RAG 的 related work，帮我找 10 篇 2023 年以来的重要论文，每篇告诉我核心方法、用了什么数据集和评测基准", "should_trigger": true},
+  {"query": "帮我把 2401.01313 这篇存到我的 alphaXiv 阅读列表里", "should_trigger": true},
+  {"query": "看看我的论文库现在有哪些文件夹？我想把读过的论文整理一下，再建一个专门放扩散模型的文件夹", "should_trigger": true},
+  {"query": "openai/CLIP 是这篇论文（2103.00020）的开源代码吗？帮我看看仓库结构，训练和评测代码分别在哪", "should_trigger": true},
+  {"query": "Chelsea Finn 最近在做什么研究？她今年发了哪些论文，经常和谁合作", "should_trigger": true},
+  {"query": "这篇论文（arXiv:1706.03762）实验用了什么超参数？我要复现它的训练，帮我从论文里找出来并标出页码", "should_trigger": true},
+  {"query": "alphaxiv 上有没有做 diffusion 生成质量评估的论文？帮我找几篇关键的，顺便看看有哪些研究者专注这个方向", "should_trigger": true},
+  {"query": "帮我用 Google Scholar 查一下这几篇论文的引用数，我想知道哪些工作影响力最大", "should_trigger": false},
+  {"query": "把刚才读的那篇文章用三句话总结一下核心观点，控制在 50 字以内", "should_trigger": false},
+  {"query": "帮我把这份本地 PDF 转成 markdown，保留标题层级和表格", "should_trigger": false},
+  {"query": "我下载的论文 PDF 在 Downloads 文件夹里，帮我提取里面的表格数据存成 csv", "should_trigger": false},
+  {"query": "给我讲讲注意力机制的原理，不用引用具体论文，讲清楚就行", "should_trigger": false},
+  {"query": "帮我把这条参考文献格式化成 APA 风格：Vaswani et al., Attention Is All You Need, 2017", "should_trigger": false},
+  {"query": "在 GitHub 上搜一下有没有 CLIP 的第三方精简实现，比较一下 star 数和维护活跃度", "should_trigger": false},
+  {"query": "帮我查一下有哪些论文引用了 Attention Is All You Need，我要做引用网络分析", "should_trigger": false},
+  {"query": "这个 Python 脚本跑得太慢了，帮我分析一下瓶颈并优化", "should_trigger": false},
+  {"query": "帮我写一段关于 Transformer 架构的课程作业总结，不用查资料，按我课上讲的内容来", "should_trigger": false}
+]

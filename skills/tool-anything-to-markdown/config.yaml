@@ -1,0 +1,9 @@
+mineru:
+  default_enable_formula: true
+  default_enable_table: true
+  default_is_ocr: false
+  default_language: ch
+  default_model: vlm
+  poll_interval: 3
+  poll_timeout: 300
+  token: "sk-efLm5SywsyndDrDBygK9OKs3SwPlje7NvGNazuGn6zDYmjfl"
