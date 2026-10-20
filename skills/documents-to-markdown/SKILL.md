@@ -1,5 +1,6 @@
 ---
 name: documents-to-markdown
+display_name: 文件转markdown
 description: "通过 MinerU 精准解析 API 将 PDF/图片/Office/HTML 等多种格式文档转换为 Markdown。需 Token，支持单文件/批量/URL/本地文件上传，YAML 配置管理密钥。触发词：文档转md、anything-to-markdown、mineru、文档转换、extract task、图片转md、word转md、ppt转md。"
 allowed-tools:
   - Read

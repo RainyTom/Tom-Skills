@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grsai 图片生成"
+  short_description: "通过 Grsai 生成和编辑项目演示配图，支持模型选择与异步结果查询"
+  default_prompt: "使用 $grsai-image-gen 为当前项目生成一张适合技术汇报的演示配图。"
